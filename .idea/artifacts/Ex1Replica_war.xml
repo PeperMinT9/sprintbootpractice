@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Ex1Replica:war">
+    <output-path>$PROJECT_DIR$/Ex1Replica/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Ex1Replica</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="Ex1Replica-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Ex1Replica:war exploded" />
+    </root>
+  </artifact>
+</component>
