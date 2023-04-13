@@ -1,0 +1,12 @@
+Lombok
+Spring Boot DevTools
+Spring Web
+Spring Data JPA
+MySQL Driver
+
+<!-- add -->
+<dependency>
+	<groupId>jstl</groupId>
+	<artifactId>jstl</artifactId>
+	<version>1.2</version>
+</dependency>
