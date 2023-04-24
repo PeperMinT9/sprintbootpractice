@@ -21,8 +21,38 @@
     </script>
 </head>
 <body>
+    <button type="button" class="btn btn-sm btn-outline-danger" onclick="location.href='shopform'" style="margin-bottom: 10px;">상품등록</button>
     <h5 class = "alert alert-success">
         총 ${totalCount}개의 상품이 등록되어있습니다
+        <span style="float: right">
+            <button type="button" class="btn btn-sm btn-outline-success" onclick="location.href='list2'" style="margin-bottom: 10px">큰사진으로 확인</button>
+        </span>
     </h5>
+    <table class="table table-bordered">
+        <tr style="background-color: #ddd">
+            <th style="width: 50px">번호</th>
+            <th style="width: 300px">상품명</th>
+            <th style="width: 70px">색상</th>
+            <th style="width: 100px">가격</th>
+            <th style="width: 50px">상세보기</th>
+        </tr>
+        <c:forEach var="dto" items="${list}" varStatus="i">
+            <tr>
+                <td align="center">${i.count}</td>
+                <td>
+                    <img src="http://tuifirjpufst16981859.cdn.ntruss.com/shop/${dto.photo}?type=f&w=40&h=40&faceopt=true&ttype=jpg"
+                         border="1" hsapce="10">
+                    <b>${dto.sangpum}</b>
+                </td>
+                <td style="background-color: ${dto.color}">${dto.color}</td>
+                <td align="right">
+                    <fmt:formatNumber value="${dto.price}" type="currency" currencySymbol="$" minFractionDigits="0"/>
+                </td>
+                <td align="center">
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='detail?num=${dto.num}&selector=${selector}'">detail</button>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
 </body>
 </html>

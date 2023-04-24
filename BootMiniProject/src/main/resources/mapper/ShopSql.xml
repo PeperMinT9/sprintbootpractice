@@ -4,4 +4,14 @@
     <select id="getTotalCount" resultType="int">
         select count(*) from bootshop
     </select>
+    <insert id="insertShop" parameterType="ShopDto">
+        insert into bootshop (sangpum, color, price, cnt, photo) values (#{sangpum}, #{color},
+                                                                         #{price}, #{cnt}, #{photo})
+    </insert>
+    <select id="getAllSangpums" resultType="ShopDto">
+        select * from bootshop order by num asc
+    </select>
+    <select id="getOneSangpums" resultType="ShopDto">
+        select * from bootshop where num=#{num}
+    </select>
 </mapper>

@@ -6,12 +6,16 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bit701?serverTimezone=Asia/Seoul
-    username: angel
-    password: 1234
+    #url: jdbc:mysql://localhost:3306/bit701?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://db-g66jm-kr.vpc-pub-cdb.ntruss.com:3306/bit701?serverTimezone=Asia/Seoul
+    username: study
+    password: bit123!@#
+  servlet:
+    multipart:
+      max-file-size: 20MB
 
 # mybatis setting
 mybatis:
-  type-aliases-package: boot.study.dto, boot.study.mapper
+  type-aliases-package: boot.study.dto
   mapper-locations:
   - /mapper/**/*.xml
