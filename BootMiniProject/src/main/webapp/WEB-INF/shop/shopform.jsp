@@ -53,7 +53,7 @@
                 <tr>
                     <th style="width: 100px; background-color: #ddd;">갯수</th>
                     <td>
-                        <input type="number" class="form-control" name="price" value="1"
+                        <input type="number" class="form-control" name="cnt" value="1"
                                min="1" max="9" step="1">
                     </td>
                 </tr>

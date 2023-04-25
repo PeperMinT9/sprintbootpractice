@@ -14,4 +14,13 @@
     <select id="getOneSangpums" resultType="ShopDto">
         select * from bootshop where num=#{num}
     </select>
+    <update id="updatePhoto" parameterType="Map">
+        update bootshop set photo=#{photo} where num=#{num}
+    </update>
+    <update id="updateShop" parameterType="ShopDto">
+        update bootshop set sangpum=#{sangpum}, price=#{price}, color=#{color}, cnt=#{cnt} where num=#{num}
+    </update>
+    <delete id="deleteShop" parameterType="int">
+        delete from bootshop where num=#{num}
+    </delete>
 </mapper>

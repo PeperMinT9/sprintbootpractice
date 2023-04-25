@@ -9,9 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/shop")
@@ -76,12 +79,47 @@ public class ShopController {
     @PostMapping("/insert")
     public String insert(ShopDto dto, MultipartFile upload) {
         // 네이버 클라우드의 버켓에 사진 업로드하기
-        String photo = storageService.uploadFile(bucketName, "shop/", upload);
+        String photo = storageService.uploadFile(bucketName, "shop", upload);
         // 반환된 암호화된 파일명을 dto에 넣기
         dto.setPhoto(photo);
 
         // db insert
         shopMapper.insertShop(dto);
+
+        return "redirect:list";
+    }
+
+    @PostMapping("/photochange")
+    @ResponseBody public String changePhoto(MultipartFile upload, int num) {
+        // s3 스토리지에 업로드된 기존 파일 지우기
+        String fileName = shopMapper.getOneSangpums(num).getPhoto();
+        storageService.deleteFile(bucketName, "shop", fileName);
+
+        // 네이버 클라우드의 버켓에 사진 업로드하기
+        String photo = storageService.uploadFile(bucketName, "shop", upload);
+        Map<String, Object> map = new HashMap<>();
+        map.put("photo", photo);
+        map.put("num", num);
+
+        shopMapper.updatePhoto(map);
+        //System.out.println(photo);
+        return photo; // 업로드된 파일명 반환
+    }
+
+    @GetMapping("/update")
+    @ResponseBody public void changeShop(ShopDto dto) {
+        System.out.println("dto.num=" + dto.toString());
+        shopMapper.updateShop(dto);
+    }
+
+    @GetMapping("/delete")
+    public String deleteShop(int num) {
+        // s3 스토리지에 업로드된 기존 파일 지우기
+        String fileName = shopMapper.getOneSangpums(num).getPhoto();
+        storageService.deleteFile(bucketName, "shop", fileName);
+
+        // db삭제
+        shopMapper.deleteShop(num);
 
         return "redirect:list";
     }

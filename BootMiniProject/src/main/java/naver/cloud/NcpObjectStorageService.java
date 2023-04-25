@@ -43,7 +43,7 @@ public class NcpObjectStorageService implements ObjectStorageService{
 
             PutObjectRequest objectRequest = new PutObjectRequest(
                     bucketName,
-                    directoryPath + filename,
+                    directoryPath + "/" + filename,
                     fileIn,
                     objectMetadata).withCannedAcl(CannedAccessControlList.PublicRead);
 
@@ -57,4 +57,16 @@ public class NcpObjectStorageService implements ObjectStorageService{
         }
     }
 
+    @Override
+    public void deleteFile(String bucketName, String directoryPath, String fileName) {
+        String path = directoryPath + "/" + fileName;
+        // 해당 버킷에 파일이 존재하면 true 반환
+        boolean isfind = s3.doesObjectExist(bucketName, path);
+        System.out.println("isfind=" + isfind);
+        // 존재할경우 삭제
+        if(isfind) {
+            s3.deleteObject(bucketName, path);
+            System.out.println(path + ":삭제완료!");
+        }
+    }
 }

@@ -37,6 +37,7 @@
             <th style="width: 50px">상세보기</th>
         </tr>
         <c:forEach var="dto" items="${list}" varStatus="i">
+
             <tr>
                 <td align="center">${i.count}</td>
                 <td>
