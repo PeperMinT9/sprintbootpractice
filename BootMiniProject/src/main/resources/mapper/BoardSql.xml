@@ -19,7 +19,7 @@
     <update id="updateReadcount" parameterType="int">
         update reboard set readcount=readcount+1 where num=#{num}
     </update>
-    <select id="getData" parameterType="int" resultType="BaordDto">
+    <select id="getData" parameterType="int" resultType="BoardDto">
         select * from reboard where num=#{num}
     </select>
 </mapper>

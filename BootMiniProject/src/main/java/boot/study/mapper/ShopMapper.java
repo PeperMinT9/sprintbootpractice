@@ -12,7 +12,6 @@ public interface ShopMapper {
     public void insertShop(ShopDto dto);
     public List<ShopDto> getAllSangpums();
     public ShopDto getOneSangpums(int num);
-
     public void updatePhoto(Map<String, Object> map);
     public void updateShop(ShopDto dto);
     public void deleteShop(int num);

@@ -156,7 +156,16 @@
     <script type="text/javascript">
         $("#btn_update").click(function () {
             let data = $("#updateform").serialize();
-            alert(data);
+            // alert(data);
+            $.ajax({
+                type: "get",
+                dataType: "text",
+                url: "./update",
+                data: data,
+                success: function (res) {
+                    location.reload();
+                }
+            })
         })
     </script>
 
