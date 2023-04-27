@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="../commonvar.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -26,7 +27,8 @@
 <body>
     <div style="text-align: center;">
         <h2>${dto.sangpum}</h2><br>
-        <img src="https://kr.object.ncloudstorage.com/bit701-bucket-29/shop/${dto.photo}" border="1" hsapce="10"><br>
+<%--        <img src="https://kr.object.ncloudstorage.com/bit701-bucket-29/shop/${dto.photo}" border="1" hsapce="10"><br>--%>
+        <img src="https://${imageUrl}/shop/${dto.photo}" border="1" hsapce="10"><br>
         <h4 style="background-color: ${dto.color};">색상: ${dto.color}</h4><br>
         <h4>가격: ${dto.price}</h4><br>
         <h4>수량: ${dto.cnt}</h4><br>
@@ -61,8 +63,10 @@
                 </div>
 
                 <div class="modal-body">
-                    <img src="http://tuifirjpufst16981859.cdn.ntruss.com/shop/${dto.photo}?type=f&w=160&h=160&faceopt=true&ttype=jpg" border="2"
-                     style="margin-left: 30px; border-radius: 50px;" id="modalphoto">
+<%--                    <img src="http://tuifirjpufst16981859.cdn.ntruss.com/shop/${dto.photo}?type=f&w=160&h=160&faceopt=true&ttype=jpg" border="2"--%>
+<%--                     style="margin-left: 30px; border-radius: 50px;" id="modalphoto">--%>
+                    <img src="http://${imageUrl_small}/shop/${dto.photo}?type=f&w=160&h=160&faceopt=true&ttype=jpg" border="2"
+                         style="margin-left: 30px; border-radius: 50px;" id="modalphoto">
                     <i class="bi bi-camera-fill update-photo" style="position: absolute; left: 180px; top: 140px; font-size: 26px; cursor: pointer;"></i>
                     <input type="file" id="photoupload" style="display: none">
                 </div>
@@ -92,7 +96,8 @@
                 contentType:false,
                 success:function(res) {
                     alert(res)
-                    let src = `http://tuifirjpufst16981859.cdn.ntruss.com/shop/\${res}?type=f&w=160&h=160&faceopt=true&ttype=jpg`;
+                    // let src = `http://tuifirjpufst16981859.cdn.ntruss.com/shop/\${res}?type=f&w=160&h=160&faceopt=true&ttype=jpg`;
+                    let src = `http://${imageUrl_small}/shop/\${res}?type=f&w=160&h=160&faceopt=true&ttype=jpg`;
                     $("#modalphoto").attr("src", src);
                 }
             })
@@ -111,7 +116,9 @@
                 </div>
 
                 <div class="modal-body">
-                    <img src="http://tuifirjpufst16981859.cdn.ntruss.com/shop/${dto.photo}?type=f&w=160&h=160&faceopt=true&ttype=jpg" border="2"
+<%--                    <img src="http://tuifirjpufst16981859.cdn.ntruss.com/shop/${dto.photo}?type=f&w=160&h=160&faceopt=true&ttype=jpg" border="2"--%>
+<%--                         style="margin-left: 30px; border-radius: 50px;">--%>
+                    <img src="http://${imageUrl_small}/shop/${dto.photo}?type=f&w=160&h=160&faceopt=true&ttype=jpg" border="2"
                          style="margin-left: 30px; border-radius: 50px;">
                     <br><br>
                     <form id="updateform">

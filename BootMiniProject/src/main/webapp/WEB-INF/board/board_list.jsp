@@ -7,6 +7,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="10; url=./list;">
     <title>Insert title here</title>
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -49,6 +50,14 @@
 
                 <!-- 제목 -->
                 <td>
+                    <!-- depth 1당 빈칸2개 띄우기 -->
+                    <c:forEach begin="1" end="${depth}">
+                        &nbsp;&nbsp;
+                    </c:forEach>
+                    <!-- 답글일 경우에만 앞에 답글 이미지 넣기 -->
+                    <c:if test="${depth > 0}">
+                        <img src="../photo/re.png">
+                    </c:if>
                     <a href = "content?num=${dto.num}&currentPage=${currentPage}" style = "color: text-decoration: none; cursor: pointer;">
                             ${dto.subject}
                         <!-- 사진이 있을경우 아이콘 출력 -->
@@ -69,27 +78,24 @@
 <!-- 페이징 처리 -->
 <div style = "width: 700px; text-align: center; font-size:20px;">
     <!-- 이전 -->
-    <c:if test = "${startPage > 1}">
-    <a style = "color: black; text-decoration: none; cursor: pointer;"
-       href = "list?currentPage=${startPage - 1}">
-        <i class="bi bi-arrow-left-square"></i></a>
+    <c:if test="${startPage > 1}">
+        <a style="color: black; text-decoration: none; cursor: pointer;" href="list?currentPage=${startPage - 1}">
+            <i class="bi bi-arrow-left-square"></i></a>
     </c:if>
     <!-- 페이지번호 출력 -->
-    <c:forEach var = "pp" begin = "${startPage}" end = "${endPage}">
-    <c:if test = "${currentPage == pp}">
-    <a style = "color: green; text-decoration: none; cursor: pointer;"
-       href = "list?currentPage=${pp}">${pp}</a>
+    <c:forEach var="pp" begin="${startPage}" end="${endPage}">
+    <c:if test="${currentPage == pp}">
+        <a style="color: green; text-decoration: none; cursor: pointer;" href="list?currentPage=${pp}">${pp}</a>
     </c:if>
-    <c:if test = "${currentPage != pp}">
-    <a style = "color: black; text-decoration: none; cursor: pointer;"
-       href = "list?currentPage=${pp}">${pp}</a>
+    <c:if test="${currentPage != pp}">
+        <a style="color: black; text-decoration: none; cursor: pointer;" href="list?currentPage=${pp}">${pp}</a>
     </c:if>
     </c:forEach>
     <!-- 다음 -->
-    <c:if test = "${endPage < totalPage}">
-    <a style = "color: black; text-decoration: none; cursor: pointer;"
-       href = "list?currentPage=${endPage + 1}">
-        <i class="bi bi-arrow-right-square"></i></a>
+    <c:if test="${endPage < totalPage}">
+        <a style="color: black; text-decoration: none; cursor: pointer;" href="list?currentPage=${endPage + 1}">
+            <i class="bi bi-arrow-right-square"></i>
+        </a>
     </c:if>
 </body>
 </html>

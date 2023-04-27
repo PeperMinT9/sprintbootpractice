@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="../commonvar.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -41,8 +42,8 @@
             <tr>
                 <td align="center">${i.count}</td>
                 <td>
-                    <img src="http://tuifirjpufst16981859.cdn.ntruss.com/shop/${dto.photo}?type=f&w=40&h=40&faceopt=true&ttype=jpg"
-                         border="1" hsapce="10">
+<%--                    <img src="http://tuifirjpufst16981859.cdn.ntruss.com/shop/${dto.photo}?type=f&w=40&h=40&faceopt=true&ttype=jpg" border="1" hsapce="10">--%>
+                    <img src="http://${imageUrl_small}/shop/${dto.photo}?type=f&w=40&h=40&faceopt=true&ttype=jpg" border="1" hsapce="10">
                     <b>${dto.sangpum}</b>
                 </td>
                 <td style="background-color: ${dto.color}">${dto.color}</td>

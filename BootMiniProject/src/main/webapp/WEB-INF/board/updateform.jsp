@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="../commonvar.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -14,64 +15,56 @@
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <style>
-
+        body, body * {
+            font-family: 'Jua'
+        }
     </style>
-    <script>
-
-    </script>
 </head>
 <body>
-<img id="showimg" style="position: absolute; left: 500px; top: 10px; max-width: 300px">
-<div style="width: 450px">
-    <form action="insert" method="post" enctype="multipart/form-data">
+<!-- 이미지 출력할곳 -->
+<img id="showimg"
+     style="position: absolute;left:500px;top:10px;max-width: 300px;" src="https://${imageUrl}/board/${dto.filename}">
+
+<div style="width: 450px;">
+    <form action="update" method="post" enctype="multipart/form-data">
         <!-- hidden -->
-        <input type="hidden" name="num" value="${num}">
-        <input type="hidden" name="ref" value="${ref}">
-        <input type="hidden" name="step" value="${step}">
-        <input type="hidden" name="depth" value="${depth}">
+        <input type="hidden" name="num" value="${dto.num}">
         <input type="hidden" name="currentPage" value="${currentPage}">
 
         <table class="table table-bordered">
             <caption align="top"><h4><b>
-                <c:if test="${num == 0}">
-                    글쓰기
-                </c:if>
-                <c:if test="${num > 0}">
-                    답글쓰기
-                </c:if>
+                글수정
             </b></h4></caption>
             <tr>
-                <th style="width: 100px; background-color: #ddd;">작성자</th>
+                <th style="width: 100px;background-color: #ddd">작성자</th>
                 <td>
-                    <input type="text" class="form-control" name="writer" required="required">
+                    <input type="text" class="form-control" name="writer" required="required"
+                           value="${dto.writer}">
                 </td>
             </tr>
             <tr>
-                <th style="width: 100px; background-color: #ddd;">제목</th>
+                <th style="width: 100px;background-color: #ddd">제목</th>
                 <td>
-                    <input type="text" class="form-control" name="subject" value="${subject}" required="required">
+                    <input type="text" class="form-control" name="subject" value="${dto.subject}" required="required">
                 </td>
             </tr>
             <tr>
-                <th style="width: 100px; background-color: #ddd;">공유사진</th>
+                <th style="width: 100px;background-color: #ddd">공유사진</th>
                 <td>
                     <input type="file" class="form-control" name="upload" id="myfile">
                 </td>
             </tr>
-            <tr>
-                <th style="width: 100px; background-color: #ddd;">비밀번호</th>
-                <td>
-                    <input type="password" class="form-control" name="pass" required="required">
-                </td>
-            </tr>
+
             <tr>
                 <td colspan="2">
-                    <textarea style="width: 100%; height: 130px;" name="content" required="required" class="form-control"></textarea>
+					<textarea style="width: 100%;height: 130px;" name="content" required="required"
+                              class="form-control">${dto.content}</textarea>
                 </td>
             </tr>
+
             <tr>
                 <td colspan="2" align="center">
-                    <button type="submit" class="btn btn-outline-success">글저장</button>
+                    <button type="submit" class="btn btn-outline-success">수정</button>
                     <button type="button" class="btn btn-outline-success"
                             onclick="history.back()">취소
                     </button>

@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="../commonvar.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -31,8 +32,10 @@
     <div >
         <c:forEach var="dto" items="${list}" varStatus="i">
             <div style="float: left; margin-right: 10px;" align="center">
-                <img src="http://tuifirjpufst16981859.cdn.ntruss.com/shop/${dto.photo}?type=f&w=160&h=160&faceopt=true&ttype=jpg" border="1" hsapce="10"
-                 onclick="location.href='detail?num=${dto.num}&selector=${selector}'" style="cursor: pointer"><br>
+<%--                <img src="http://tuifirjpufst16981859.cdn.ntruss.com/shop/${dto.photo}?type=f&w=160&h=160&faceopt=true&ttype=jpg" border="1" hsapce="10"--%>
+<%--                 onclick="location.href='detail?num=${dto.num}&selector=${selector}'" style="cursor: pointer"><br>--%>
+                <img src="http://${imageUrl_small}/shop/${dto.photo}?type=f&w=160&h=160&faceopt=true&ttype=jpg" border="1" hsapce="10"
+                     onclick="location.href='detail?num=${dto.num}&selector=${selector}'" style="cursor: pointer">
                 <b>${dto.sangpum}</b>
             </div>
             <c:if test="${i.count % 4 == 0}">

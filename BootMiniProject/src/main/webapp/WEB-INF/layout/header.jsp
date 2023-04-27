@@ -20,6 +20,7 @@
 
     </script>
 </head>
+<c:set var="root" value="<%=request.getContextPath()%>"/>
 <body>
     <a href = "${root}/" style="font-size: 30px;">
         <i class="bi bi-house-heart"></i>&nbsp; SpringBoot+Tiles3+Mybatis3 Project

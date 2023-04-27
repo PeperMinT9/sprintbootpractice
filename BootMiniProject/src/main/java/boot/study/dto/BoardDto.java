@@ -18,6 +18,6 @@ public class BoardDto {
     private int ref;
     private int step;
     private int depth;
-    private Timestamp datetime;
+    private Timestamp writeday;
 
 }

@@ -15,4 +15,7 @@ public interface BoardMapper {
     public List<BoardDto> getPagingList(Map<String, Integer> map); // map:start.perpage
     public void updateReadcount(int num);
     public BoardDto getData(int num);
+    public int isEqualPass(Map<String, Object> map);//num,pass
+    public void deleteBoard(int num);
+    public void updateBoard(BoardDto dto);
 }

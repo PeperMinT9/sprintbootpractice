@@ -24,7 +24,8 @@ public class ShopController {
     ShopMapper shopMapper;
 
     // 버킷이름 설정
-    private String bucketName="bit701-bucket-29";
+     private String bucketName="bit701-bucket-29";
+    // private String bucketName="bit701-bucket-56";
 
     @Autowired
     private NcpObjectStorageService storageService;
