@@ -18,6 +18,6 @@
     </select>
 
     <select id="getPhotos" parameterType="int" resultType="PhotoDto">
-        select * from guest_photo order by photo_idx asc
+        select * from guest_photo where guest_idx=#{guest_idx} order by photo_idx asc
     </select>
 </mapper>
